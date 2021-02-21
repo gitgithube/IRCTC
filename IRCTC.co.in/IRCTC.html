@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>IRCTC Next Generation eTicketing System</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script src="font.js"></script>
+        <style>
+            .time{
+                font-size:15px;
+                text-align: center;
+                margin-top:10px;
+                color:gray;
+            }
+            .top{
+                background-color: #f5f5f5;
+                overflow:hidden;
+                 
+            }
+            .top1{
+                margin-top:7px;
+                text-align:center;
+            }
+            .top1 a{
+                font-size:12px;
+                text-decoration: none;
+                margin-left:13px;
+                color:gray;
+                font-family: Heading,Helvetica,Arial,sans-serif;
+            }
+            .top2{
+                margin-top: 7px;
+                text-align:center;
+            }
+            .top2 a{
+                text-decoration:none;
+                font-size: 14px;
+                margin-left:13px;
+                cursor: pointer;
+                font-weight: 500;
+            }
+            .top2 a:hover{
+                color: red;
+            }
+            .block{
+                padding:2px 8px;
+                padding-right:0px;
+                font-size:9px;
+                color:blue;
+                background-color: white;
+                border:solid blue;
+                border-radius: 15px;
+                font-weight:500;
+                text-align: left;
+            }
+            .block1{
+                padding:2px 8px;
+                font-size:13px;
+                color:white;
+                background-color: blue;
+                border:solid blue;
+                border-radius: 15px;
+                padding-top:3px;
+            }
+            .text-block {
+                position: absolute;
+                margin: 0 auto;
+                left: 60%;
+                right: 0;        
+                text-align: center;
+                top: 15%; 
+                background-color: rgba(255, 255, 255,0.7);
+                font-family: Courier New;
+                color: black;
+                width: 25%;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0);
+            }
+            .text-block1{
+                position: absolute;
+                margin: 0 auto;
+                left: 60%;
+                right: 0;        
+                top: 84%; 
+                background-color: rgba(255, 255, 255, 0.700);
+                font-family: Courier New;
+                color: black;
+                width: 25%;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0);
+                padding-top:20px;
+                padding-bottom:20px;
+            }
+            .text-block2{
+                position: absolute;
+                margin: 0 auto;
+                left: 60%;
+                right: 0;        
+                top: 93.8%; 
+                background-color: rgb(255, 255, 255,0.7);
+                font-family: Courier New;
+                color: black;
+                width: 25%;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0);
+                padding-top:8px;
+                padding-bottom:8px;
+            }
+            .text-block2-1{
+                width:95%;
+                border:2px solid rgba(196, 74, 74, 0.767);
+                margin-left:10px;
+                font-weight: bolder;
+            }
+            .text-block2-1 a{
+                margin-left:5px;
+                color:rgba(0, 0, 255, 0.9);
+                text-decoration: none;
+            }
+            .text-block2-1 a:hover{
+                color:blue;
+                text-decoration: underline;
+                cursor: pointer;
+                font-weight:800;
+            }
+            .container {
+                display: block;
+                position: relative;
+                margin-left:29px;
+                margin-top:10px;
+                color:rgb(4, 4, 104);
+                font-weight: 700;
+                cursor: pointer;
+                font-size: 16px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            }
+            .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: rgb(117, 199, 231);
+            }
+            .container:hover input ~ .checkmark {
+            background-color: rgba(22, 201, 224,0.5);
+            }
+            .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+            }
+            .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            }
+            .container input:checked ~ .checkmark:after {
+            display: block;
+            }
+            .container .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            }
+            .opt{
+                padding:6px 20px;
+                color:white;
+                background-color: rgb(4, 4, 104);
+                font-size: 18px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .opt1{
+                padding:7px 22px;
+                text-align: center;
+                color:white;
+                background-color: rgb(4, 4, 104);
+                font-size: 18px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .text-block3{
+                position: absolute;
+                margin: 0 auto;
+                text-align: center;
+                left:-30%;
+                right: 0;        
+                top: 30%; 
+                background-color: rgb(255, 255, 255,0);
+                font-family: Courier New;
+                color: black;
+                width: 60%;
+                padding-top:8px;
+                padding-bottom:8px;
+                font-weight:400;
+            }
+            .circle{
+                padding:10px 30px;
+                width:90px;
+                height:90px;
+                border-radius:80%;
+                background-color: white;
+                border:1px solid black;
+                margin-left:53px;
+                margin-top:5px;
+                cursor: pointer;
+            }
+            .circle:hover{
+                background-color: rgb(6, 6, 87);
+                color:white;
+            }
+            .icon-block1{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:47.5%;        
+                top: 148%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;
+            }
+            .icon-block2{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:15.5%;        
+                top: 148%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;
+            }
+            .icon-block3{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:-16%;        
+                top: 148%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block4{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:-48%;        
+                top: 148%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block5{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:63%;        
+                top: 171%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block6{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:31.5%;        
+                top: 171%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block7{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:-0.5%;        
+                top: 171%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block8{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:-32.5%;        
+                top: 171%; 
+                background-color: rgb(255, 255, 255);
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .icon-block9{
+                position: absolute;
+                margin: 0 auto;
+                left:0;
+                right:-64.5%;        
+                top: 171%; 
+                font-family: Courier New;
+                color: black;
+                text-align: center;
+                width: 13%;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-bottom:6px;
+                cursor: pointer;            }
+            .image-block1{
+                position:absolute;
+                margin:0 auto;
+                left:0%;
+                right:52%;
+                top:210%;
+                color:black;
+                width:340px;
+                height:340px;
+            }
+            .href{
+                color:rgb(0, 0, 0);
+                text-decoration: none;
+                margin-left: 10px;
+                font-weight:600;
+                font-family: Courier New;
+                font-size:18px;
+            }  
+            .href:hover{
+                font-weight:bold;
+                font-size:17px;
+            }
+            .image-block2{
+                position:absolute;
+                margin:0 auto;
+                left:0%;
+                right:0%;
+                top:210%;
+                color:black;
+                width:330px;
+            }
+            .image-block3{
+                position:absolute;
+                margin:0 auto;
+                left:52%;
+                right:0%;
+                top:210%;
+                color:black;
+                width:330px;
+            }
+            .image-block4{
+                position:absolute;
+                margin:0 auto;
+                left:0;
+                right:28%;
+                top:260%;
+                color:black;
+                width:330px;
+            }
+            .image-block5{
+                position:absolute;
+                margin:0 auto;
+                left:28%;
+                right:0%;
+                top:260%;
+                color:black;
+                width:330px;
+            }
+            .flip-img {
+                background-color: transparent;
+                width: 330px;
+                height: 300px;
+                perspective: 1000px;
+            }
+            .flip-img-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                transition: transform 0.6s;
+                transform-style: preserve-3d;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            }
+            .flip-img:hover .flip-img-inner {
+                transform: rotateY(180deg);
+            }
+            .flip-img-front, .flip-img-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+            .flip-img-front {
+                background-color: #bbb;
+                color: black;
+            }
+            .flip-img-back {
+                background-color: #2341c57e;
+                color: white;
+                transform: rotateY(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top">
+            <img src="Logo1.PNG" alt="Logo1" style="float:left;width:65px;height:65px;margin-top:8px;margin-left:10px;margin-bottom:8px;">
+            <img src="Logo2.PNG" alt="Logo2" style="float:right;width:60px;height:65px;margin-top:8px;margin-right:15px;margin-bottom:8px;">
+            <div class="top1">
+                <a class="time" id="p1"></a>
+                <a href="#" style="color:red;">ALERTS</a>
+                <a href="#" >A <sup>-</sup></a>
+                <a href="#">A</a>
+                <a href="#">A <sup>+</sup></a>
+                <a href="#">CONTACT US</a>
+                <a href="#">REGISTER</a>
+                <a href="#" style="color:red;font-weight: 700;">LOGIN</a>
+                <a href="#">AGENT LOGIN</a>
+                <a href="#" style="color:blue;font-weight: 700;">ASK DISHA</a>
+                <a href="#">हिंदी</a><br>
+            </div>
+            <div class="top2">
+                <i class="fas fa-home" style="color:gray;font-size:17px;margin-top:7px;cursor: pointer;"></i>
+                <a class="block"><span style="text-align:left;font-size:13px">IRCTC</span><span class="block1">Exclusive</span></a>
+                <a>TRAINS</a>
+                <a>HOLIDAYS</a>
+                <a>STAYS</a>
+                <a href="#">FLIGHTS</a>
+                <a>LOYALTY</a>
+                <a>Meals</a>
+                <a>PROMOTIONS</a>
+                <a>AT STATION</a>
+                <a>IRCTC eWallet</a>
+                <a>MORE</a>
+            </div>    
+        </div>
+        <div>
+            <img src="wp1905658-railway-wallpapers.jpg" alt="Train Wallpaper" style="width:100%;height:720px">
+            <div class="text-block" style="padding-bottom:20px;">
+                <span style="font-size:75px;font-weight:lighter;letter-spacing:-1.5px;">BOOK</span><br>
+                <p style="font-size:25px;font-weight:200;margin-top:-40px;">YOUR TICKET</p><br>
+                <img src="trainb.PNG" alt="train" style="width:45px;height:45px;margin-top:-70px;">
+                <form action="/action_page.php">
+                    <input type="text"  value="From*" style="color:gray;width:85%;height:38px;margin-bottom:-25px;box-shadow: 0px 8px 16px 0px rgb(0, 0, 0,0.2);border-color: white;"><br>
+                    <span style="font-size:30px;color:rgb(8, 8, 141);cursor: pointer;">&#8593;</span>
+                    <span style="font-size:30px;margin-left:-20px;color:rgb(8, 8, 141);cursor: pointer;">&#8595;</span><br>
+                    <input type="text" value="To*" style="color:gray;width:85%;height:38px;margin-top:-5px;box-shadow: 0px 8px 16px 0px rgb(0, 0, 0,0.2);border-color: white;"><br>
+                    <input type="date" style="color:rgb(0, 0, 0);width:85%;height:38px;margin-top:15px;box-shadow: 0px 8px 16px 0px rgb(0, 0, 0,0.2);border-color: white;"><br>
+                    <select style="color:black;width:85%;height:38px;margin-top:15px;box-shadow: 0px 8px 16px 0px rgb(0, 0, 0,0.2);border-color: white;" >
+                        <option >All Classes</option>
+                        <option>Anubhuti Class (EA)</option>
+                        <option>AC First Class (1A)</option>
+                        <option>Exec. Chair Car</option>
+                        <option>AC 2 Tier (2A)</option>
+                        <option>First Class (FC)</option>
+                        <option>AC 3 Tier (3A)</option>
+                        <option>AC 3 Economy (3E)</option>
+                        <option>AC Chair Car (CC)</option>
+                        <option>Sleeper (SL)</option>
+                        <option>Second Sitting (2S)</option>
+                    </select><br>
+                    <label class="container"><span style="margin-left:-110px;">Flexible With Date</span>
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container" style="margin-top:0px;"><span style="margin-left:-100px">Divyaang Concession</span>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </form>
+                <div class="opt" style="width:85%;margin-left:30px;margin-top:10px;"><a href="#" style="text-decoration: none;">Find Trains</a></div> 
+            </div>
+            <div class="text-block1">
+                <a class="opt1" href="#" style="margin-left: 15px;">PNR STATUS</a>
+                <a class="opt1" href="#" >CHARTS/VACANCY</a>
+            </div>
+            <div class="text-block2">
+                <div class="text-block2-1">
+                    <a href="#">List of Running Trains with Arrival & Departure Timings.</a>
+                </div>
+            </div>
+            <div class="text-block3">
+                <span style="font-size:80px;letter-spacing: 0px;">INDIAN</span>
+                <span style="font-size:80px;letter-spacing: 0px;margin-left: 2px;">RAILWAYS</span><br>
+                <span style="font-size:25px;font-weight:bolder">Safety</span>
+                <span style="font-size:30px;font-weight:bolder">|</span>
+                <span style="font-size:25px;font-weight:bolder">Seurity</span>
+                <span style="font-size:30px;font-weight:bolder">|</span>
+                <span style="font-size:25px;font-weight:bolder">Punctuality</span>
+                <span style="font-size:30px;font-weight:bolder">|</span>
+            </div>
+        </div>
+        <div style="text-align: center;margin-top:40px;">
+            <a href="#" ><img src="add.PNG" alt="Add" style="width:850px;height:95px;"></a>
+        </div>
+        <div style="text-align: center;margin-top: 30px;">
+            <span style="font-family: Courier New;font-size:50px;font-weight:400;letter-spacing:-5px;margin-bottom:-30px;font-weight: lighter;text-shadow: 2px 2px gray;color:darkblue;">Have you not found the right one? </span><br>
+            <span style="font-family: Courier New;font-size:50px;font-weight:400;letter-spacing:-5px;margin-top:-10px;line-height: 25px;font-weight: lighter;text-shadow: 2px 2px gray;color:darkblue;">Find a service suitable for you here. </span><br>
+            <div class="icon-block1">
+                <div class="circle"><a class="fad fa-plane" style="font-size: 50px;margin-left:-13px;margin-top:10px;"></a></div>
+                <p><a href="#" style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">FLIGHTS</a></p>
+            </div>
+            <div class="icon-block2">
+                <div class="circle"><a class="fad fa-bed" href="#" style="font-size: 50px;margin-left:-17px;margin-top:10px;"></a></div>
+                <p><a href="#" style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">STAY</a></p>
+            </div>
+            <div class="icon-block3">
+                <div class="circle"><a class="fad fa-chart-line" href="#" style="font-size: 50px;margin-left:-11px;margin-top:10px;"></a></div>
+                <p><a href="#" style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">RAIL DRISHTI</a></p>
+            </div>
+            <div class="icon-block4">
+                <div class="circle"><a class="fad fa-concierge-bell" href="#" style="font-size: 55px;margin-left:-13px;margin-top:6px;"></a></div>
+                <p><a href="#" style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">E-CATERING</a></p>
+            </div>
+            <div class="icon-block5">
+                <div class="circle"><a class="fad fa-snowboarding" href="#" style="font-size: 55px;margin-left:-16px;margin-top:8px;"></a></div>
+                <p><a style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">HOLIDAY PACKAGES</a></p>
+            </div>
+            <div class="icon-block6">
+                <div class="circle"><a class="fad fa-train" href="#" style="font-size: 55px;margin-left:-11px;margin-top:6px;"></a></div>
+                <p><a style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">TOURIST TRAIN</a></p>
+            </div>
+            <div class="icon-block7">
+                <div class="circle"><a class="fad fa-mountains" href="#" style="font-size: 55px;margin-left:-18px;margin-top:6px;"></a></div>
+                <p><a style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">HILL RAILWAYS</a></p>
+            </div>
+            <div class="icon-block8">
+                <div class="circle"><a class="fad fa-subway" href="#" style="font-size: 55px;margin-left:-11px;margin-top:6px;"></a></div>
+                <p><a style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">CHARTER TRAIN</a></p>
+            </div>
+            <div class="icon-block9">
+                <div class="circle"><a class="fad fa-image" href="#" style="font-size: 55px;margin-left:-13px;margin-top:6px;"></a></div>
+                <p><a style="font-size: 18px;font-family: Courier New;font-weight: bolder;text-decoration: none;">GALLERY</a></p>
+            </div>
+        </div>
+        <div style="margin-top:28%;text-align: center;">
+            <span style="font-family: Courier New;font-size:50px;font-weight:400;letter-spacing:-5px;margin-bottom:-30px;font-weight: lighter;text-shadow: 2px 2px gray;color:darkblue">HOLIDAYS</span>
+            <div class="image-block1">
+                <div class="flip-img">
+                    <div class="flip-img-inner">
+                      <div class="flip-img-front">
+                        <img src="img1.PNG" alt="img1" style="width:340px;height:300px;">
+                      </div>
+                      <div class="flip-img-back">
+                        <p style="margin-left:10px;margin-right:10px;margin-top:4px;font-weight:lighter;color:rgb(0,0,109); letter-spacing:-1px;font-family: monospace;font-size:17px;">Redefining Royalty, Luxury and Comfort, Maharajas express takes you on a sojourn to the era of bygone stately splendour of princely states. Sylvan furnishings, elegant ambience and modern amenities are amalgamated for an Experience Unsurpassed. It has been a winner of World’s Leading Luxury train by World Travel Awards consecutively for last six years.</p>
+                        <a class="href" href="#">More info<i class="fad fa-arrow-right" style="color:red;font-size:13px;"></i></a>
+                      </div>
+                    </div>
+                    <h2 style="margin-top:10px;font-weight:100;font-size:25px;letter-spacing:0px;color:rgb(20, 20, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Maharaja's Express</h2>
+                </div>
+            </div>
+            <div class="image-block2">
+                <div class="flip-img">
+                    <div class="flip-img-inner">
+                      <div class="flip-img-front">
+                        <img src="img2.PNG" alt="img2" style="width:340px;height:300px;">
+                      </div>
+                      <div class="flip-img-back">
+                        <p style="margin-left:10px;margin-right:10px;margin-top:4px;font-weight:lighter;color:rgb(0, 0, 109); font-family: monospace;font-size:17px;">Best deals in International Holiday packages, handpicked by IRCTC, for Thailand, Dubai, Sri Lanka, Hong Kong, China, Macau, Bhutan, Nepal, U.K., Europe, USA, Australia etc. The packages are inclusive of sightseeing, meals, visa charges and overseas medical insurance to give you a hassle-free and memorable experience.</p>
+                        <a class="href" href="#">More info<i class="fad fa-arrow-right" style="color:red;font-size:13px;"></i></a>
+                      </div>
+                    </div>
+                    <h2 style="margin-top:10px;font-weight:100;font-size:25px;letter-spacing:0px;color:rgb(20, 20, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">International Packages</h2>
+                </div>
+            </div>
+            <div class="image-block3">
+                <div class="flip-img">
+                    <div class="flip-img-inner">
+                      <div class="flip-img-front">
+                        <img src="img3.PNG" alt="img3" style="width:340px;height:300px;">
+                      </div>
+                      <div class="flip-img-back">
+                        <p style="margin-left:10px;margin-right:10px;margin-top:4px;letter-spacing:-0.5px;font-weight:lighter;color:rgb(0, 0, 109); font-family: monospace;font-size:17px;">Be it the spiritual devotee seeking blessings of Tirupati, Shirdi or Mata Vaishno Devi or the leisure traveller wanting to relish the Blue mountains of North East, Sand-dunes of Rajasthan, Hamlets of Ladakh, Wonders of Himalayas, Serene lakes or Picturesque Islands, IRCTC has it all. Discover India through IRCTC!</p>
+                        <a class="href" href="#">More info<i class="fad fa-arrow-right" style="color:red;font-size:13px;"></i></a>
+                      </div>
+                    </div>
+                    <h2 style="margin-top:10px;font-weight:100;font-size:25px;letter-spacing:0px;color:rgb(20, 20, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Domestic Air Packages</h2>
+                </div>
+            </div>
+            <div class="image-block4">
+                <div class="flip-img">
+                    <div class="flip-img-inner">
+                      <div class="flip-img-front">
+                        <img src="img4.PNG" alt="img4" style="width:340px;height:300px;">
+                      </div>
+                      <div class="flip-img-back">
+                        <p style="margin-left:10px;margin-right:10px;margin-top:4px;font-weight:lighter;color:rgb(0, 0, 109); font-family: monospace;font-size:17px;">India, the country where Buddhism originated has rich memories of the Buddhist legacy. As part of its drive towards austerity, the only kind of art & architecture that it supported were Stupas, Chaityas & Viharas. Buddhist Train India will help you visit all these places up close for a truly religious experience.</p>
+                        <a class="href" href="#">More info<i class="fad fa-arrow-right" style="color:red;font-size:13px;"></i></a>
+                      </div>
+                    </div>
+                    <h2 style="margin-top:10px;font-weight:100;font-size:25px;letter-spacing:0px;color:rgb(20, 20, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Buddist Circut Tourist Train</h2>
+                </div>
+            </div>
+            <div class="image-block5">
+                <div class="flip-img">
+                    <div class="flip-img-inner">
+                      <div class="flip-img-front">
+                        <img src="img5.PNG" alt="img5" style="width:340px;height:300px;">
+                      </div>
+                      <div class="flip-img-back">
+                        <p style="margin-left:10px;margin-right:10px;margin-top:4px;letter-spacing: -1px;font-weight:lighter;color:rgb(0, 0, 109); font-family: monospace;font-size:17px;">IRCTC offers Exclusive Rail tour packages with confirmed train tickets, sight-seeing and meals for enchanting Nilgiri Mountains, Darjeeling, Kullu Manali, Kashmir, Gangtok or divine tours of Mata Vaishno Devi, Rameswaram, Madurai, Shirdi, Tirupati etc. Holiday packages/ Land packages to these destinations are also available.</p>
+                        <a class="href" href="#">More info<i class="fad fa-arrow-right" style="color:red;font-size:13px;"></i></a>
+                      </div>
+                    </div>
+                    <h2 style="margin-top:10px;font-weight:100;font-size:25px;letter-spacing:0px;color:rgb(20, 20, 99); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Rail Tour Package</h2>
+                </div>
+            </div>
+        </div>
+        <script>
+            var today = new Date();
+            var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+'['+time+"]";
+            document.getElementById("p1").innerHTML=dateTime;
+        </script>
+    </body>
+</html>
